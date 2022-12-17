@@ -4,6 +4,7 @@ import { Rating, Input } from "react-native-elements";
 import { useSelector, useDispatch } from "react-redux";
 import RenderCampsite from "../features/campsites/RenderCampsite";
 import { toggleFavorite } from "../features/favorites/favoritesSlice";
+import { postComment } from "../features/comments/commentsSlice";
 
 const CampsiteInfoScreen = ({ route }) => {
   const { campsite } = route.params;
@@ -23,7 +24,7 @@ const CampsiteInfoScreen = ({ route }) => {
       text,
       campsiteId: campsite.id,
     };
-    console.log(newComment);
+    dispatch(postComment(newComment));
     setShowModal(!showModal);
   };
 
@@ -38,12 +39,11 @@ const CampsiteInfoScreen = ({ route }) => {
       <View style={styles.commentItem}>
         <Text style={{ fontSize: 14 }}>{item.text}</Text>
         <Rating
-          startingValue={rating}
-          randomly
+          startingValue={item.rating}
+          readonly
           imageSize={10}
           style={{ alignItems: "flex-start", paddingVertical: "5%" }}
         />
-        {/* <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text> */}
         <Text style={{ fontSize: 12 }}>
           {`-- ${item.author}, ${item.date}`}
         </Text>
@@ -96,14 +96,14 @@ const CampsiteInfoScreen = ({ route }) => {
             leftIcon={{ type: "font-awesome", name: "user-o" }}
             leftIconContainerStyle={{ paddingRight: 10 }}
             onChangeText={(author) => setAuthor(author)}
-            value
+            value={author}
           />
           <Input
             placeholder="Comment"
             leftIcon={{ type: "font-awesome", name: "comment-o" }}
             leftIconContainerStyle={{ paddingRight: 10 }}
-            onChangeText={(text) => setAuthor(text)}
-            value
+            onChangeText={(text) => setText(text)}
+            value={text}
           />
           <View style={{ margin: 10 }}>
             <Button
