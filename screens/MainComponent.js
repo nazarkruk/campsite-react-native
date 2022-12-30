@@ -299,6 +299,7 @@ const Main = () => {
                 color={color}
               />
             ),
+            headerShown: false,
           }}
         />
         <Drawer.Screen
@@ -315,6 +316,7 @@ const Main = () => {
                 color={color}
               />
             ),
+            headerShown: false,
           }}
         />
         <Drawer.Screen
@@ -347,6 +349,7 @@ const Main = () => {
                 color={color}
               />
             ),
+            headerShown: false,
           }}
         />
         <Drawer.Screen
@@ -363,6 +366,7 @@ const Main = () => {
                 color={color}
               />
             ),
+            headerShown: false,
           }}
         />
         <Drawer.Screen
@@ -379,6 +383,7 @@ const Main = () => {
                 color={color}
               />
             ),
+            headerShown: false,
           }}
         />
         <Drawer.Screen
@@ -395,6 +400,7 @@ const Main = () => {
                 color={color}
               />
             ),
+            headerShown: false,
           }}
         />
       </Drawer.Navigator>
